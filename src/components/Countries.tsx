@@ -35,8 +35,8 @@ export const Countries=()=>{
      
      
     return(
-        <div>
-        <Table dataSource={data} columns={columns} />;
+        <div >
+        <Table dataSource={data} columns={columns} scroll={{ y: '100%' }} />;
         </div>
     )
 }

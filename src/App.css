@@ -6,7 +6,10 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.gutter-box {
+  padding: 8px 0;
+  background: #00a0e9;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -13,13 +13,16 @@ function Main() {
   const [confirmed,setConfirmed]=useState<any>("")
   const [recovered,setRecovered]=useState<any>("")
   const [deaths,setDeaths]=useState<any>("")
+  const [date,setDate]=useState<any>("")
   const dispatch=useDispatch()
+  const style = {  padding: '8px 0' };
   useEffect(()=>{
     axios.get("https://covid19.mathdro.id/api").then(response=>{
       console.log(response)
       setConfirmed(response.data.confirmed.value)
         setRecovered(response.data.recovered.value)
         setDeaths(response.data.deaths.value)
+        setDate(response.data.lastUpdate)
       axios.get("https://covid19.mathdro.id/api/countries").then(response=>{
         let countries:Array<any>=[]
         response.data.countries.map((item:any)=>{
@@ -38,42 +41,60 @@ function Main() {
   return (
     <div>
       <h1 style={{textAlign:"center"}}>CovidTracker</h1>
-       <Row>
-         <Col span={8}>
-      
-          <Card title="Confirmed" style={{textAlign:"center", backgroundColor: "green",borderStyle: "solid" }}>
+      <p>Last updated on {new Date(date).toLocaleString(undefined, {timeZone: 'Asia/Kolkata'})}</p>
+      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+      <Col className="gutter-row" span={8}>
+        <div style={style}>
+        <Card title="Confirmed" style={{textAlign:"center", backgroundColor: "#eaff8f",borderStyle: "solid" }}>
           <p style={{textAlign:"center"}}>{confirmed}</p>
-          </Card>
+        </Card>
+        </div>
       </Col>
-      <Col span={8}>
-      <Card title="Recovered" style={{ textAlign:"center",backgroundColor: "yellow",borderStyle: "solid" }}>
-        <p style={{textAlign:"center"}}>{recovered}</p>
+      <Col className="gutter-row" span={8}>
+        <div style={style}>
+        <Card title="Recovered" style={{ textAlign:"center",backgroundColor: "#fffb8f",borderStyle: "solid" }}>
+       <p style={{textAlign:"center"}}>{recovered}</p>
        </Card>
-       </Col>
-       <Col span={8}>
-       <Card title="Deaths" style={{textAlign:"center",backgroundColor: "red",borderStyle: "solid" }}>
-         <p style={{textAlign:"center"}}>{deaths}</p>
+        </div>
+      </Col>
+      <Col className="gutter-row" span={8}>
+        <div style={style}>
+        <Card title="Deaths" style={{textAlign:"center",backgroundColor: "#ffa39e",borderStyle: "solid" }}>
+        <p style={{textAlign:"center"}}>{deaths}</p>
        </Card>
-    
-     </Col>
-     
-      </Row>
-      <Row>
-    <Col span={15}>
-    <LineChart />
-    </Col>
-    <Col span={9} >
-    <BarChart confirmed={confirmed} recovered={recovered} deaths={deaths}/>
-    </Col>
-      </Row>
-      <Row>
-        <Col span={16}>
-        <AllCountries />
-        </Col>
-        <Col span={8}>
-        <Countries />
-        </Col>
-      </Row>
+        </div>
+      </Col>
+      <Col className="gutter-row" span={6}>
+        <div style={style}>col-6</div>
+      </Col>
+    </Row>
+    <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+      <Col className="gutter-row" span={12}>
+        <div style={style}>
+        <LineChart />
+        </div>
+      </Col>
+      <Col className="gutter-row" span={12}>
+        <div style={style}>
+        <BarChart confirmed={confirmed} recovered={recovered} deaths={deaths}/>
+        </div>
+      </Col>
+    </Row>
+    <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+      <Col className="gutter-row" span={24}>
+        <div style={style}>
+          <AllCountries />
+        </div>
+      </Col>
+    </Row>
+    <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+      <Col className="gutter-row" span={24}>
+        <div style={style}>
+          <h2 style={{textAlign:"center"}}>Countries List</h2>
+          <Countries />
+        </div>
+      </Col>
+    </Row>
     </div>
   );
 }

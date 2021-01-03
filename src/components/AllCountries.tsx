@@ -47,7 +47,7 @@ const data={
 }
 
 const options={
-  
+      responsive:true,
       title:{
         display:true,
         text:'Covid19 cases',
