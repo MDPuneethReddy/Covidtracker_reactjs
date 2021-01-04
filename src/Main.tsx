@@ -64,18 +64,15 @@ function Main() {
        </Card>
         </div>
       </Col>
-      <Col className="gutter-row" span={6}>
-        <div style={style}>col-6</div>
-      </Col>
     </Row>
     <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
       <Col className="gutter-row" span={12}>
-        <div style={style}>
+        <div >
         <LineChart />
         </div>
       </Col>
       <Col className="gutter-row" span={12}>
-        <div style={style}>
+        <div  >
         <BarChart confirmed={confirmed} recovered={recovered} deaths={deaths}/>
         </div>
       </Col>

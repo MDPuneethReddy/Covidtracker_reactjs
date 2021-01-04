@@ -52,10 +52,11 @@ export const BarChart=(props:Iprops)=>{
           
     }
     return(
-        <div >
+        <div>
         {dataperCountry!=="" &&
-        <Bar  data={data} options={options}/>
+        <Bar  data={data} options={options} height={300}/>
     }
-        </div>
+    </div>
+      
     )
 }

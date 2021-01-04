@@ -68,10 +68,9 @@ export const LineChart=(props:Iprops)=>{
     }
     return(
         
-        <div style={{fontFamily: 'sans-serif',
-        textAlign: 'center',}}>
-    <Line data={data} options={lineOptions} />
-  </div>
+    <div>  
+    <Line data={data} options={lineOptions} height={300} />
+    </div>  
         
     )
 }
